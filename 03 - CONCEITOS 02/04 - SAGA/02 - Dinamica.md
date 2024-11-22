@@ -1,0 +1,13 @@
+# Dinâmica do SAGA
+
+Vamos falar agora sobre como funciona a implementação do padrão SAGA com orquestração em microsserviços. Ao contrário da coreografia, onde cada serviço toma decisões de forma independente, aqui temos um orquestrador central responsável por garantir que cada etapa da saga seja executada na ordem correta e que todas as transações associadas sejam concluídas com sucesso.
+
+Para começar, vamos imaginar uma situação onde cada um dos microsserviços possui seu próprio banco de dados independente. Quando a saga é iniciada, o orquestrador recebe uma mensagem inicial, que pode vir de um sistema de mensageria como RabbitMQ, ou até de uma requisição REST ou chamada gRPC — o importante é que o processo seja acionado. Essa mensagem inicial é enviada para o primeiro microsserviço, sinalizando o começo da primeira etapa da saga. O orquestrador registra o estado atual, marcando o primeiro passo como "em execução" e identificando a saga com um ID único para monitoramento de cada transação de forma isolada.
+
+Assim que o primeiro microsserviço completa sua transação, ele retorna um status de sucesso ao orquestrador, que então atualiza o estado da saga, indicando que o passo 1 foi concluído. Esse processo se repete, passando ao próximo microsserviço e ao passo seguinte. Caso todos os passos sejam completados sem problemas, a saga é marcada como finalizada com sucesso.
+
+Agora, vamos falar sobre o que acontece se algum passo falhar. Suponha que, em uma das etapas intermediárias, um erro ocorra. Nesse caso, o orquestrador deve iniciar um processo de compensação, realizando uma série de “rollbacks” nos passos anteriores. Por exemplo, se o passo 3 falhar, o orquestrador começará a reverter as operações, sinalizando o passo 3 como "compensado" e passando ao passo 2 para que ele também seja revertido. O orquestrador continua o rollback até retornar ao primeiro passo, garantindo que todas as mudanças feitas pela saga sejam desfeitas. O estado final da saga, então, será "compensado e concluído", indicando que ela foi encerrada, mas sem atingir o objetivo original.
+
+Esse processo de compensação exige que cada microsserviço seja projetado para lidar com falhas de forma resiliente, garantindo que as operações possam ser revertidas quando necessário. A criação de um orquestrador que gerencie esses passos distribuídos é uma tarefa complexa, especialmente ao considerar a necessidade de resiliência e consistência entre sistemas distintos.
+
+Mais para frente vamos mostrar um exemplo de código para ajudar a visualizar a lógica de um orquestrador na prática.
