@@ -16,6 +16,7 @@ Vantagens:
 Visibilidade e controle: Oferece uma visão clara de todo o fluxo de trabalho.
 Gestão simplificada de processos complexos: É mais fácil monitorar e ajustar processos complexos centralmente.
 Controle centralizado: Todas as atividades são coordenadas pelo orquestrador, tornando a gestão de mudanças mais eficiente.
+
 Desvantagens:
 
 Maior acoplamento: Os serviços ficam mais dependentes do orquestrador.

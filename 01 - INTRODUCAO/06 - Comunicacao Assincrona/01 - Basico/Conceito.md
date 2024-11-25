@@ -3,6 +3,7 @@
 ## Comunicação Assíncrona em Microsserviços
 
 A comunicação assíncrona permite que sistemas interajam sem uma conexão direta e imediata. Isso significa que a troca de informações pode acontecer em momentos distintos, deixando os sistemas menos dependentes uns dos outros e garantindo um acoplamento fraco. 
+
 Vamos a um exemplo prático:
 
 Suponha que temos um sistema de e-commerce. Quando uma compra é aprovada, isso desencadeia várias ações em sistemas diferentes: o estoque precisa ser atualizado, a nota fiscal precisa ser emitida e a ordem de separação de produto deve ser enviada para distribuição. Em uma comunicação síncrona e direta, o sistema de e-commerce teria que se conectar a cada um desses sistemas e esperar a resposta de todos. Isso seria arriscado e complicado, especialmente se algum sistema estivesse fora do ar.

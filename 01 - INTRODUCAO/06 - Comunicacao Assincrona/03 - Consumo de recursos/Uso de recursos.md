@@ -8,6 +8,4 @@ Quando temos grandes volumes de dados a serem processados, a comunicação assí
 
 Essa abordagem de filas permite que sistemas processem um volume muito maior de solicitações sem precisar de hardware suficiente para processar tudo em tempo real. Imagine que temos um milhão de solicitações de pagamento em um site. Em vez de atender todas ao mesmo tempo, essas solicitações são enfileiradas, e os servidores processam os pagamentos conforme têm capacidade. Assim, mesmo que o processamento leve um minuto ou alguns segundos, o sistema consegue lidar com a demanda de forma mais econômica e escalável.
 
-Na nossa plataforma de ensino, por exemplo, usamos comunicação assíncrona para registrar o histórico de interações dos alunos, como visualizações de vídeo e respostas a questões. Em vez de processar cada evento imediatamente, o sistema coloca esses eventos em uma fila, e um serviço de métricas consome esses dados e os processa continuamente. Isso evita lentidões e permite que mantemos o desempenho sem precisar de uma infraestrutura custosa.
-
 A comunicação assíncrona, portanto, permite que você escale suas operações de forma eficiente, evitando o uso de recursos em excesso e proporcionando resiliência quando sistemas ficam temporariamente fora do ar. Essa abordagem é crucial para sistemas distribuídos e de alto desempenho.

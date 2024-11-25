@@ -4,6 +4,7 @@ Leonardo Cassuriaga Lima, mais de 20 anos atuando com desenvolvimento / tecnolog
 
 Atuei em setores como saúde, financeiro, tributário, rh, frigorifico, engenharia de produção, eventos, etc.
 
+Certificações Microsoft.
 Certificação Scrum Master.
 Certificação LGPD.
 
@@ -40,4 +41,7 @@ Atualmente atuando com Arquitetura de Solução.
     - Patterns para Banco de dados
 
 - Etapa 4
-    - Hands on - Coding Dojo
+    - Hands on
+
+
+
